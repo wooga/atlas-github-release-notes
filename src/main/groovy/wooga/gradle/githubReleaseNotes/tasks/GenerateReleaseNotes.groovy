@@ -58,7 +58,7 @@ class GenerateReleaseNotes extends AbstractGithubTask {
         def outputFile = output.get().asFile
         outputFile.parentFile.mkdirs()
         def s = strategy.get()
-        def rawChanges = detector.detectChangesFromTag(
+        def rawChanges = detector.detectChanges(
                 from.getOrNull() as String,
                 to.getOrNull() as String,
                 branch.get())

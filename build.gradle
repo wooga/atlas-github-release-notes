@@ -47,7 +47,7 @@ dependencies {
 
     testCompile 'com.github.stefanbirkner:system-rules:1.18.0'
     testCompile "org.ajoberstar:gradle-git:1.7.2"
-    testCompile 'com.wooga.spock.extensions:spock-github-extension:0.1.0'
+    testCompile 'com.wooga.spock.extensions:spock-github-extension:0.1.2'
     compile 'com.wooga.github:github-changelog-lib:0.4.+'
     compile "gradle.plugin.net.wooga.gradle:atlas-github:1.+"
 }

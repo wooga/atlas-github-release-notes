@@ -57,23 +57,4 @@ class GithubReleaseNotesPluginSpec extends ProjectSpec {
         "generateReleaseNotes" | GenerateReleaseNotes
     }
 
-
-//    @Unroll
-//    def 'Creates the [#extensionName] extension with type #extensionType'() {
-//        given:
-//        assert !project.plugins.hasPlugin(PLUGIN_NAME)
-//        assert !project.extensions.findByName(extensionName)
-//
-//        when:
-//        project.plugins.apply(PLUGIN_NAME)
-//
-//        then:
-//        def extension = project.extensions.findByName(extensionName)
-//        extensionType.isInstance extension
-//
-//        where:
-//        extensionName     | extensionType
-//        'GithubReleaseNotes' | GithubReleaseNotesPluginExtension
-//    }
-
 }

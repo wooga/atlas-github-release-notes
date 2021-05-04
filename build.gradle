@@ -16,7 +16,7 @@
  */
 
 plugins {
-    id 'net.wooga.plugins' version '1.5.0'
+    id 'net.wooga.plugins' version '2.0.0'
 }
 
 group 'net.wooga.gradle'
@@ -39,15 +39,19 @@ pluginBundle {
 github {
     repositoryName = "wooga/atlas-github-release-notes"
 }
-
 dependencies {
-    testCompile('org.spockframework:spock-core:1.2-groovy-2.4') {
-        exclude module: 'groovy-all'
-    }
-
-    testCompile 'com.github.stefanbirkner:system-rules:1.18.0'
-    testCompile "org.ajoberstar:gradle-git:1.7.2"
-    testCompile 'com.wooga.spock.extensions:spock-github-extension:0.1.0'
+    testCompile "org.ajoberstar:grgit:1.7.2"
+    testCompile'com.wooga.spock.extensions:spock-github-extension:0.1.2'
     compile 'com.wooga.github:github-changelog-lib:0.4.+'
-    compile "gradle.plugin.net.wooga.gradle:atlas-github:1.+"
+    compile "gradle.plugin.net.wooga.gradle:atlas-github:2.+"
 }
+configurations.all {
+    resolutionStrategy {
+        force 'org.codehaus.groovy:groovy-all:2.5.12'
+        force 'org.codehaus.groovy:groovy-macro:2.5.12'
+        force 'org.codehaus.groovy:groovy-nio:2.5.12'
+        force 'org.codehaus.groovy:groovy-sql:2.5.12'
+        force 'org.codehaus.groovy:groovy-xml:2.5.12'
+    }
+}
+

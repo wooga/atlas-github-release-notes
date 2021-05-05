@@ -42,7 +42,7 @@ class GenerateReleaseNotes extends AbstractGithubTask {
 
     GenerateReleaseNotes() {
         super(GenerateReleaseNotes.class)
-        output = this.project.layout.fileProperty()
+        output = this.project.objects.fileProperty()
         from = this.project.objects.property(String)
         to = this.project.objects.property(String)
         releaseName = this.project.objects.property(String)

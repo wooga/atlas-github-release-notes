@@ -42,6 +42,6 @@ class GithubReleaseNotesPlugin implements Plugin<Project> {
     }
 
     protected static createDefaultTasks(Project project) {
-        project.tasks.register(GENERATE_RELEASE_NOTES_TASK, GenerateReleaseNotes)
+        project.tasks.create(GENERATE_RELEASE_NOTES_TASK, GenerateReleaseNotes)
     }
 }

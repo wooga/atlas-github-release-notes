@@ -42,8 +42,8 @@ github {
 dependencies {
     testCompile "org.ajoberstar:grgit:1.7.2"
     testCompile'com.wooga.spock.extensions:spock-github-extension:0.1.2'
-    compile 'com.wooga.github:github-changelog-lib:0.4.+'
-    compile "gradle.plugin.net.wooga.gradle:atlas-github:2.+"
+    compile 'com.wooga.github:github-changelog-lib:[0.4.2, 0.5)'
+    compile "gradle.plugin.net.wooga.gradle:atlas-github:[2,3)"
 }
 configurations.all {
     resolutionStrategy {

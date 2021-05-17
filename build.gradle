@@ -15,8 +15,14 @@
  *
  */
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
 plugins {
-    id 'net.wooga.plugins' version '2.0.0'
+    id 'net.wooga.plugins' version '2.1.1-rc.1'
 }
 
 group 'net.wooga.gradle'
@@ -39,6 +45,7 @@ pluginBundle {
 github {
     repositoryName = "wooga/atlas-github-release-notes"
 }
+
 dependencies {
     testCompile "org.ajoberstar:grgit:1.7.2"
     testCompile'com.wooga.spock.extensions:spock-github-extension:0.1.2'

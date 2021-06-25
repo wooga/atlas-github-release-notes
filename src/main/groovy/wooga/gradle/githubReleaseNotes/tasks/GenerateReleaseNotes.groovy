@@ -12,33 +12,61 @@ import org.gradle.api.tasks.TaskAction
 import wooga.gradle.github.base.tasks.internal.AbstractGithubTask
 
 class GenerateReleaseNotes extends AbstractGithubTask {
+
+    private final Property<String> releaseName
+
     @Input
-    final Property<String> releaseName
+    Property<String> getReleaseName() {
+        releaseName
+    }
+
+    private final Property<String> from
 
     @Input
     @Optional
-    final Property<String> from
+    Property<String> getFrom() {
+        from
+    }
+
+    private final Property<String> to
 
     @Input
     @Optional
-    final Property<String> to
+    Property<String> getTo() {
+        to
+    }
+
+    private final Property<String> branch
 
     @Input
-    final Property<String> branch
+    Property<String> getBranch() {
+        branch
+    }
+
+    private final Property<GeneratorStrategy> strategy
 
     @Input
-    final Property<GeneratorStrategy> strategy
+    Property<GeneratorStrategy> getStrategy() {
+        strategy
+    }
 
-    @Optional
+    private final Property<Closure<String>> renderer
+
     @Internal
-    final Property<Closure<String>> renderer
+    Property<Closure<String>> getRenderer() {
+        renderer
+    }
 
     void setRenderer(Closure<String> renderer) {
         this.renderer.set(renderer)
     }
 
+    private final RegularFileProperty output
+
     @OutputFile
-    final RegularFileProperty output
+    RegularFileProperty getOutput() {
+        output
+    }
 
     GenerateReleaseNotes() {
         super(GenerateReleaseNotes.class)
@@ -47,7 +75,7 @@ class GenerateReleaseNotes extends AbstractGithubTask {
         to = this.project.objects.property(String)
         releaseName = this.project.objects.property(String)
         branch = this.project.objects.property(String)
-        branch.set(this.project.provider({this.repository.defaultBranch}))
+        branch.set(this.project.provider({ this.repository.defaultBranch }))
         strategy = this.project.objects.property(GeneratorStrategy)
         renderer = this.project.objects.property(Closure) as Property<Closure>
     }
@@ -69,8 +97,7 @@ class GenerateReleaseNotes extends AbstractGithubTask {
             def renderer = this.renderer.get()
             def changeSet = s.mapChangeSet(rawChanges)
             outputFile.text = renderer.call(changeSet)
-        }
-        else {
+        } else {
             outputFile.text = s.render(rawChanges)
         }
     }

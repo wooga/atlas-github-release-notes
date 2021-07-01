@@ -3,7 +3,9 @@
 
 withCredentials([usernamePassword(credentialsId: 'github_integration', passwordVariable: 'githubPassword', usernameVariable: 'githubUser'),
                  usernamePassword(credentialsId: 'github_integration_2', passwordVariable: 'githubPassword2', usernameVariable: 'githubUser2'),
-                 string(credentialsId: 'atlas_github_release_notes_coveralls_token', variable: 'coveralls_token')]) {
+                 string(credentialsId: 'atlas_github_release_notes_coveralls_token', variable: 'coveralls_token'),
+                 string(credentialsId: 'atlas_plugins_sonar_token', variable: 'sonar_token')
+]) {
 
     def testEnvironment = [ 'osx':
                                [
@@ -17,5 +19,5 @@ withCredentials([usernamePassword(credentialsId: 'github_integration', passwordV
                                ]
                         ]
 
-    buildGradlePlugin plaforms: ['osx','windows'], coverallsToken: coveralls_token, testEnvironment: testEnvironment
+    buildGradlePlugin plaforms: ['osx','windows'], coverallsToken: coveralls_token, sonarToken: sonar_token, testEnvironment: testEnvironment
 }

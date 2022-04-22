@@ -22,7 +22,10 @@ buildscript {
 }
 
 plugins {
-    id 'net.wooga.plugins' version '2.2.0'
+    id 'net.wooga.plugins' version '2.2.4'
+    id 'net.wooga.snyk' version '0.10.0'
+    id "net.wooga.snyk-gradle-plugin" version "0.2.0"
+    id "net.wooga.cve-dependency-resolution" version "0.4.0"
 }
 
 group 'net.wooga.gradle'
@@ -46,19 +49,14 @@ github {
     repositoryName.value "wooga/atlas-github-release-notes"
 }
 
-dependencies {
-    testCompile "org.ajoberstar:grgit:1.7.2"
-    testCompile'com.wooga.spock.extensions:spock-github-extension:[0.1.2, 0.2)'
-    compile 'com.wooga.github:github-changelog-lib:[0.4.2, 0.5)'
-    compile "gradle.plugin.net.wooga.gradle:atlas-github:[2,3)"
+cveHandler {
+    configurations("compileClasspath", "runtimeClasspath", "testCompileClasspath", "testRuntimeClasspath", "integrationTestCompileClasspath", "integrationTestRuntimeClasspath")
 }
-configurations.all {
-    resolutionStrategy {
-        force 'org.codehaus.groovy:groovy-all:2.5.12'
-        force 'org.codehaus.groovy:groovy-macro:2.5.12'
-        force 'org.codehaus.groovy:groovy-nio:2.5.12'
-        force 'org.codehaus.groovy:groovy-sql:2.5.12'
-        force 'org.codehaus.groovy:groovy-xml:2.5.12'
-    }
+
+dependencies {
+    testCompile 'org.ajoberstar.grgit:grgit-core:[4.1.1,5['
+    testCompile'com.wooga.spock.extensions:spock-github-extension:[0.3, 0.4['
+    compile 'com.wooga.github:github-changelog-lib:[0.6, 0.7['
+    compile "gradle.plugin.net.wooga.gradle:atlas-github:[2,3["
 }
 

@@ -22,7 +22,7 @@ buildscript {
 }
 
 plugins {
-    id 'net.wooga.plugins' version '2.3.0'
+    id 'net.wooga.plugins' version '3.1.0'
     id 'net.wooga.snyk' version '0.10.0'
     id "net.wooga.snyk-gradle-plugin" version "0.2.0"
     id "net.wooga.cve-dependency-resolution" version "0.4.0"
@@ -35,12 +35,15 @@ pluginBundle {
     website = 'https://wooga.github.io/atlas-github-release-notes/'
     vcsUrl = 'https://github.com/wooga/atlas-github-release-notes'
     tags = ['release_notes','change_logs', 'github', 'git']
+}
 
+gradlePlugin {
     plugins {
-        GithubReleaseNotes {
+        githubReleaseNotes {
             id = 'net.wooga.github-release-notes'
             displayName = 'Wooga Gradle plugin'
             description = 'This plugin provides tasks and conventions to send github-release-notes messages'
+            implementationClass = 'wooga.gradle.githubReleaseNotes.GithubReleaseNotesPlugin'
         }
     }
 }
@@ -54,9 +57,9 @@ cveHandler {
 }
 
 dependencies {
-    testCompile 'org.ajoberstar.grgit:grgit-core:[4.1.1,5['
-    testCompile'com.wooga.spock.extensions:spock-github-extension:[0.3, 0.4['
-    compile 'com.wooga.github:github-changelog-lib:[0.6, 0.7['
-    compile "gradle.plugin.net.wooga.gradle:atlas-github:[2,3["
+    testImplementation 'org.ajoberstar.grgit:grgit-core:[4.1.1,5['
+    testImplementation'com.wooga.spock.extensions:spock-github-extension:[0.3, 0.4['
+    api 'com.wooga.github:github-changelog-lib:[0.6, 0.7['
+    api "net.wooga.gradle:github:[3,4["
 }
 

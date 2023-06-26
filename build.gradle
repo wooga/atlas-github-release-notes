@@ -60,6 +60,6 @@ dependencies {
     testImplementation 'org.ajoberstar.grgit:grgit-core:[4.1.1,5['
     testImplementation'com.wooga.spock.extensions:spock-github-extension:[0.3, 0.4['
     api 'com.wooga.github:github-changelog-lib:[0.6, 0.7['
-    api "net.wooga.gradle:github:[3,4["
+    api "net.wooga.gradle:github:[4,5["
 }
 
